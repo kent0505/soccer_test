@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../config/app_colors.dart';
-
 class CustomScaffold extends StatelessWidget {
   const CustomScaffold({super.key, required this.body});
 
@@ -20,22 +18,19 @@ class CustomScaffold extends StatelessWidget {
           Expanded(
             child: Stack(
               children: [
-                // bg
+                Image.asset('assets/bg.png'),
                 Container(
-                  decoration: const BoxDecoration(
-                    color: AppColors.bg,
-                    // gradient: LinearGradient(
-                    //   begin: Alignment.topCenter,
-                    //   end: Alignment.bottomCenter,
-                    //   colors: [
-                    //     Color(0xff072434),
-                    //     Color(0xff0D0819),
-                    //   ],
-                    // ),
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      colors: [
+                        const Color(0xff0A0C14).withOpacity(0),
+                        const Color(0xff163B4B),
+                      ],
+                    ),
                   ),
                 ),
-
-                // content
                 body,
               ],
             ),
