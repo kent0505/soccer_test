@@ -28,17 +28,17 @@ class NavBar extends StatelessWidget {
                 _NavBarButton(
                   title: 'Add matches',
                   asset: 'add',
-                  active: state is HomeInitial,
+                  active: state is HomeMatches,
                   onPressed: () {
-                    context.read<HomeBloc>().add(ChangePageEvent(index: 0));
+                    context.read<HomeBloc>().add(ChangePageEvent(index: 1));
                   },
                 ),
                 _NavBarButton(
                   title: 'My matches',
                   asset: 'star',
-                  active: state is HomeMatches,
+                  active: state is HomeInitial,
                   onPressed: () {
-                    context.read<HomeBloc>().add(ChangePageEvent(index: 1));
+                    context.read<HomeBloc>().add(ChangePageEvent(index: 0));
                   },
                 ),
                 _NavBarButton(

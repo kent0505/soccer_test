@@ -136,7 +136,7 @@ class _TxtFieldState extends State<TxtField> {
                     decoration: const BoxDecoration(
                       color: AppColors.main,
                       borderRadius: BorderRadius.vertical(
-                        top: Radius.circular(8),
+                        top: Radius.circular(18),
                       ),
                     ),
                     child: CupertinoTheme(
@@ -161,7 +161,7 @@ class _TxtFieldState extends State<TxtField> {
                     decoration: const BoxDecoration(
                       color: AppColors.main,
                       borderRadius: BorderRadius.vertical(
-                        top: Radius.circular(8),
+                        top: Radius.circular(18),
                       ),
                     ),
                     child: CupertinoTheme(

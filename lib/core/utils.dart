@@ -79,83 +79,14 @@ void logger(Object message) {
 
 void precacheImages(BuildContext context) {
   try {
-    // List<String> imageAssets = [
-    //   'assets/.png',
-    // ];
-    // for (String assets in imageAssets) {
-    //   precacheImage(AssetImage(assets), context);
-    // }
+    List<String> imageAssets = [
+      'assets/bg.png',
+      'assets/logo.png',
+    ];
+    for (String assets in imageAssets) {
+      precacheImage(AssetImage(assets), context);
+    }
   } catch (e) {
     logger(e);
   }
 }
-
-
-/*
-  image_picker: ^1.1.2
-
-  ImagePicker picker = ImagePicker();
-  XFile image = XFile('');
-
-  void onPickImage() async {
-    image = await pickImage();
-    if (image.path.isNotEmpty) {
-      controller4.text = image.path;
-      checkActive();
-    }
-  }
-
-  Future<XFile> pickImage() async {
-    try {
-      final image = await ImagePicker().pickImage(source: ImageSource.gallery);
-      if (image == null) return XFile('');
-      return image;
-    } catch (e) {
-      logger(e);
-      return XFile('');
-    }
-  }
-
-
-  final controller1 = TextEditingController();
-  final controller2 = TextEditingController();
-  final controller3 = TextEditingController();
-  final controller4 = TextEditingController();
-
-  bool active = false;
-
-  void checkActive() {
-    setState(() {
-      active = getButtonActive([
-        controller1,
-        controller2,
-        controller3,
-        controller4,
-      ]);
-    });
-  }
-
-  void onSave() {
-    context.read<CafesBloc>().add();
-    context.pop();
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    controller1.text = widget.cafe.title;
-    controller2.text = widget.cafe.location;
-    controller3.text = widget.cafe.description;
-    controller4.text = widget.cafe.image;
-    image = XFile(widget.cafe.image);
-  }
-
-  @override
-  void dispose() {
-    controller1.dispose();
-    controller2.dispose();
-    controller3.dispose();
-    controller4.dispose();
-    super.dispose();
-  }
-*/

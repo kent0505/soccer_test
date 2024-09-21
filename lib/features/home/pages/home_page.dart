@@ -19,13 +19,13 @@ class HomePage extends StatelessWidget {
         children: [
           BlocBuilder<HomeBloc, HomeState>(
             builder: (context, state) {
-              if (state is HomeMatches) return const MatchesPage();
+              if (state is HomeMatches) return const AddMatchPage();
 
               if (state is HomeNews) return const NewsPage();
 
               if (state is HomePuzzle) return const PuzzlePage();
 
-              return const AddMatchPage();
+              return const MatchesPage();
             },
           ),
           const NavBar(),
