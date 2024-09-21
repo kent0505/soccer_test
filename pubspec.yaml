@@ -30,13 +30,12 @@ flutter:
     - assets/fonts/
     - assets/puzzle/
   fonts:
-    # SFProText
     - family: SFR
       fonts:
-        - asset: assets/fonts/SFProText-Regular.ttf
+        - asset: assets/fonts/SFUIText-Regular.ttf
     - family: SFM
       fonts:
-        - asset: assets/fonts/SFProText-Medium.ttf
+        - asset: assets/fonts/SFUIText-Medium.ttf
     - family: SFB
       fonts:
-        - asset: assets/fonts/SFProText-Bold.ttf
+        - asset: assets/fonts/SFUIText-Bold.ttf
