@@ -33,6 +33,7 @@ class OnboardPage extends StatelessWidget {
             const Spacer(),
             PrimaryButton(
               title: 'GO',
+              border: false,
               color: AppColors.orange,
               onPressed: () async {
                 await saveOnboard().then((_) {

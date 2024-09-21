@@ -28,6 +28,7 @@ flutter:
   assets:
     - assets/
     - assets/fonts/
+    - assets/puzzle/
   fonts:
     # SFProText
     - family: SFR

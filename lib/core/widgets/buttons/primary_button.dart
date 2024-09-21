@@ -8,12 +8,14 @@ class PrimaryButton extends StatelessWidget {
     super.key,
     required this.title,
     this.active = true,
+    this.border = true,
     this.color = AppColors.main,
     required this.onPressed,
   });
 
   final String title;
   final bool active;
+  final bool border;
   final Color color;
   final void Function() onPressed;
 
@@ -26,7 +28,7 @@ class PrimaryButton extends StatelessWidget {
         decoration: BoxDecoration(
           color: color,
           borderRadius: BorderRadius.circular(18),
-          border: Border.all(color: AppColors.border),
+          border: border ? Border.all(color: AppColors.border) : null,
         ),
         child: CupertinoButton(
           onPressed: active ? onPressed : null,
