@@ -3,7 +3,7 @@ import 'dart:developer' as developer;
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-double navBarHeight = 60;
+double navBarHeight = 80;
 
 int getCurrentTimestamp() {
   return DateTime.now().millisecondsSinceEpoch ~/ 1000;

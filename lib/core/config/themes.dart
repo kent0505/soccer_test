@@ -8,9 +8,9 @@ final theme = ThemeData(
   primarySwatch: Colors.grey,
   fontFamily: Fonts.regular,
   textSelectionTheme: const TextSelectionThemeData(
-    cursorColor: AppColors.main,
-    selectionColor: AppColors.main,
-    selectionHandleColor: AppColors.main,
+    cursorColor: AppColors.border,
+    selectionColor: AppColors.border,
+    selectionHandleColor: AppColors.border,
   ),
   colorScheme: ColorScheme.fromSwatch(
     accentColor: AppColors.main, // overscroll indicator color

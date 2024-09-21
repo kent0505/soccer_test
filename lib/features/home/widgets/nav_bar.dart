@@ -26,26 +26,35 @@ class NavBar extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 _NavBarButton(
-                  title: 'Home',
-                  asset: 'tab1',
+                  title: 'Add matches',
+                  asset: 'add',
                   active: state is HomeInitial,
                   onPressed: () {
                     context.read<HomeBloc>().add(ChangePageEvent(index: 0));
                   },
                 ),
                 _NavBarButton(
-                  title: 'Actives',
-                  asset: 'tab1',
-                  active: state is HomeActivities,
+                  title: 'My matches',
+                  asset: 'star',
+                  active: state is HomeMatches,
                   onPressed: () {
                     context.read<HomeBloc>().add(ChangePageEvent(index: 1));
                   },
                 ),
                 _NavBarButton(
-                  asset: 'tab1',
-                  active: state is HomeSettings,
+                  title: 'News',
+                  asset: 'news',
+                  active: state is HomeNews,
                   onPressed: () {
                     context.read<HomeBloc>().add(ChangePageEvent(index: 2));
+                  },
+                ),
+                _NavBarButton(
+                  title: 'News',
+                  asset: 'puzzle',
+                  active: state is HomePuzzle,
+                  onPressed: () {
+                    context.read<HomeBloc>().add(ChangePageEvent(index: 3));
                   },
                 ),
               ],
@@ -82,13 +91,14 @@ class _NavBarButton extends StatelessWidget {
             const SizedBox(height: 14),
             SvgPicture.asset(
               'assets/$asset.svg',
-              color: active ? AppColors.white : AppColors.white50,
+              color: active ? AppColors.orange : AppColors.navbarIcon,
             ),
-            const SizedBox(height: 3),
+            const SizedBox(height: 4),
             if (title.isNotEmpty)
               TextM(
                 title,
                 fontSize: 10,
+                color: active ? AppColors.orange : AppColors.navbarIcon,
               ),
           ],
         ),

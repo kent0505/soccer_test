@@ -1,19 +1,16 @@
 import 'package:flutter/material.dart';
 
-import '../../../core/widgets/texts/text_r.dart';
+import '../../../core/widgets/custom_scaffold.dart';
 
 class SettingsPage extends StatelessWidget {
   const SettingsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
-      children: [
-        TextM(
-          'Settings',
-          fontSize: 16,
-        ),
-      ],
+    return const CustomScaffold(
+      body: Column(
+        children: [],
+      ),
     );
   }
 }

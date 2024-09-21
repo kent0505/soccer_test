@@ -11,21 +11,23 @@ class TxtField extends StatefulWidget {
     super.key,
     required this.controller,
     required this.hintText,
-    this.multiline = false,
     this.number = false,
     this.datePicker = false,
     this.timePicker = false,
     this.length = 20,
+    this.width = 260,
+    this.prefix = true,
     required this.onChanged,
   });
 
   final TextEditingController controller;
   final String hintText;
-  final bool multiline;
   final bool number;
   final bool datePicker;
   final bool timePicker;
   final int length;
+  final double width;
+  final bool prefix;
   final void Function() onChanged;
 
   @override
@@ -33,18 +35,7 @@ class TxtField extends StatefulWidget {
 }
 
 class _TxtFieldState extends State<TxtField> {
-  double _height() {
-    if (widget.multiline) return 120;
-    return 60;
-  }
-
-  int? _maxLines() {
-    if (widget.multiline) return null;
-    return 1;
-  }
-
   TextInputType? _keyboardType() {
-    if (widget.multiline) return TextInputType.multiline;
     if (widget.number) return TextInputType.number;
     return null;
   }
@@ -77,152 +68,118 @@ class _TxtFieldState extends State<TxtField> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: _height(),
-      decoration: BoxDecoration(
-        color: AppColors.textfield,
-        borderRadius: BorderRadius.circular(8),
-      ),
-      child: TextField(
-        controller: widget.controller,
-        keyboardType: _keyboardType(),
-        maxLines: _maxLines(),
-        inputFormatters: _inputFormatters(),
-        readOnly: _readOnly(),
-        textCapitalization: TextCapitalization.sentences,
-        style: const TextStyle(
-          color: AppColors.white,
-          fontFamily: Fonts.medium,
-        ),
-        decoration: InputDecoration(
-          contentPadding: const EdgeInsets.symmetric(
-            vertical: 0,
-            horizontal: 16,
-          ),
-          hintText: widget.hintText,
-          hintStyle: TextStyle(
-            color: AppColors.white50,
-            fontFamily: Fonts.medium,
-          ),
-          focusedBorder: const OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.transparent),
-          ),
-          enabledBorder: const OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.transparent),
+    return Center(
+      child: Container(
+        width: widget.width,
+        height: 45,
+        decoration: BoxDecoration(
+          color: AppColors.textfield,
+          borderRadius: BorderRadius.circular(18),
+          border: Border.all(
+            width: 1,
+            color: AppColors.border,
           ),
         ),
-        onTapOutside: (event) {
-          FocusManager.instance.primaryFocus?.unfocus();
-        },
-        onChanged: (value) {
-          widget.onChanged();
-        },
-        onTap: () async {
-          if (widget.datePicker) {
-            await showCupertinoModalPopup(
-              context: context,
-              builder: (context) {
-                return Container(
-                  height: 240,
-                  decoration: BoxDecoration(
-                    color: AppColors.white50,
-                    borderRadius: const BorderRadius.vertical(
-                      top: Radius.circular(8),
+        child: TextField(
+          controller: widget.controller,
+          textAlign: TextAlign.center,
+          keyboardType: _keyboardType(),
+          inputFormatters: _inputFormatters(),
+          readOnly: _readOnly(),
+          textCapitalization: TextCapitalization.sentences,
+          style: const TextStyle(
+            color: AppColors.white,
+            fontFamily: Fonts.regular,
+          ),
+          decoration: InputDecoration(
+            prefixIcon: widget.prefix
+                ? const Icon(
+                    Icons.edit_rounded,
+                    size: 16,
+                    color: Colors.transparent,
+                  )
+                : null,
+            suffixIcon: const Icon(
+              Icons.edit_rounded,
+              size: 16,
+              color: AppColors.border,
+            ),
+            contentPadding: const EdgeInsets.symmetric(
+              vertical: 0,
+              horizontal: 0,
+            ),
+            hintText: widget.hintText,
+            hintStyle: const TextStyle(
+              color: AppColors.border,
+              fontFamily: Fonts.regular,
+            ),
+            focusedBorder: const OutlineInputBorder(
+              borderSide: BorderSide(color: Colors.transparent),
+            ),
+            enabledBorder: const OutlineInputBorder(
+              borderSide: BorderSide(color: Colors.transparent),
+            ),
+          ),
+          onTapOutside: (event) {
+            FocusManager.instance.primaryFocus?.unfocus();
+          },
+          onChanged: (value) {
+            widget.onChanged();
+          },
+          onTap: () async {
+            if (widget.datePicker) {
+              await showCupertinoModalPopup(
+                context: context,
+                builder: (context) {
+                  return Container(
+                    height: 240,
+                    decoration: const BoxDecoration(
+                      color: AppColors.main,
+                      borderRadius: BorderRadius.vertical(
+                        top: Radius.circular(8),
+                      ),
                     ),
-                  ),
-                  child: CupertinoTheme(
-                    data: cupertinoTheme,
-                    child: CupertinoDatePicker(
-                      onDateTimeChanged: onDateTimeChanged,
-                      initialDateTime: stringToDate(widget.controller.text),
-                      mode: CupertinoDatePickerMode.date,
-                      minimumYear: 1950,
-                      maximumYear: DateTime.now().year + 1,
+                    child: CupertinoTheme(
+                      data: cupertinoTheme,
+                      child: CupertinoDatePicker(
+                        onDateTimeChanged: onDateTimeChanged,
+                        initialDateTime: stringToDate(widget.controller.text),
+                        mode: CupertinoDatePickerMode.date,
+                        minimumYear: 1950,
+                        maximumYear: DateTime.now().year + 1,
+                      ),
                     ),
-                  ),
-                );
-              },
-            );
-          } else if (widget.timePicker) {
-            await showCupertinoModalPopup(
-              context: context,
-              builder: (context) {
-                return Container(
-                  height: 240,
-                  decoration: BoxDecoration(
-                    color: AppColors.white50,
-                    borderRadius: const BorderRadius.vertical(
-                      top: Radius.circular(8),
+                  );
+                },
+              );
+            } else if (widget.timePicker) {
+              await showCupertinoModalPopup(
+                context: context,
+                builder: (context) {
+                  return Container(
+                    height: 240,
+                    decoration: const BoxDecoration(
+                      color: AppColors.main,
+                      borderRadius: BorderRadius.vertical(
+                        top: Radius.circular(8),
+                      ),
                     ),
-                  ),
-                  child: CupertinoTheme(
-                    data: cupertinoTheme,
-                    child: CupertinoDatePicker(
-                      onDateTimeChanged: onTimeChanged,
-                      initialDateTime: stringToDate(widget.controller.text),
-                      mode: CupertinoDatePickerMode.time,
-                      use24hFormat: true,
+                    child: CupertinoTheme(
+                      data: cupertinoTheme,
+                      child: CupertinoDatePicker(
+                        onDateTimeChanged: onTimeChanged,
+                        initialDateTime: stringToDate(widget.controller.text),
+                        mode: CupertinoDatePickerMode.time,
+                        use24hFormat: true,
+                      ),
                     ),
-                  ),
-                );
-              },
-            );
-          }
-        },
+                  );
+                },
+              );
+            }
+          },
+        ),
       ),
     );
   }
 }
-
-// 1
-//  date_picker_plus: ^4.1.0
-// 2
-//  readOnly: true,
-// 3
-// onTap: () async {
-//     final date = await showDatePickerDialog(
-//         context: context,
-//         leadingDateTextStyle: const TextStyle(
-//           color: AppColors.purple1,
-//           fontWeight: FontWeight.w700,
-//           fontFamily: 'InterB',
-//         ),
-//         enabledCellsTextStyle: const TextStyle(
-//           color: AppColors.black,
-//         ),
-//         currentDateTextStyle: const TextStyle(
-//           color: AppColors.white,
-//         ),
-//         currentDateDecoration: BoxDecoration(
-//           borderRadius: BorderRadius.circular(100),
-//           color: const Color(0xffFB41FF),
-//           // border: Border.all(color: const Color(0xffFB41FF)),
-//         ),
-//         disabledCellsTextStyle: const TextStyle(
-//           color: AppColors.black,
-//           fontSize: 12,
-//           fontWeight: FontWeight.w500,
-//           fontFamily: 'InterM',
-//         ),
-//         daysOfTheWeekTextStyle: const TextStyle(
-//           color: Color(0xff3d3d40),
-//           fontSize: 12,
-//           fontWeight: FontWeight.w600,
-//           fontFamily: 'InterM',
-//         ),
-//         splashColor: AppColors.pink1,
-//         highlightColor: AppColors.pink1,
-//         slidersColor: AppColors.purple1,
-//         currentDate: controller.text.isEmpty
-//             ? DateTime.now()
-//             : convertToDateTime(controller.text),
-//         minDate: DateTime(2020, 1, 1),
-//         maxDate: DateTime(2030, 1, 1),
-//         padding: EdgeInsets.zero,
-//         contentPadding: const EdgeInsets.all(24),
-//         height: 318,
-//     );
-//     if (date != null) {
-//         onDate(formatDateTime(date));
-//     }
-// },

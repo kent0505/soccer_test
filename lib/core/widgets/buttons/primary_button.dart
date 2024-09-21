@@ -8,32 +8,35 @@ class PrimaryButton extends StatelessWidget {
     super.key,
     required this.title,
     this.active = true,
-    this.width,
+    this.color = AppColors.main,
     required this.onPressed,
   });
 
   final String title;
   final bool active;
-  final double? width;
+  final Color color;
   final void Function() onPressed;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 50,
-      width: width,
-      decoration: BoxDecoration(
-        color: AppColors.main,
-        borderRadius: BorderRadius.circular(8),
-      ),
-      child: CupertinoButton(
-        onPressed: active ? onPressed : null,
-        padding: EdgeInsets.zero,
-        child: Center(
-          child: TextM(
-            title,
-            fontSize: 16,
-            color: active ? AppColors.white : AppColors.bg,
+    return Center(
+      child: Container(
+        height: 45,
+        width: 150,
+        decoration: BoxDecoration(
+          color: color,
+          borderRadius: BorderRadius.circular(18),
+          border: Border.all(color: AppColors.border),
+        ),
+        child: CupertinoButton(
+          onPressed: active ? onPressed : null,
+          padding: EdgeInsets.zero,
+          child: Center(
+            child: TextM(
+              title,
+              fontSize: 20,
+              color: active ? AppColors.white : AppColors.bg,
+            ),
           ),
         ),
       ),

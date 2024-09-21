@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 
 class CustomScaffold extends StatelessWidget {
-  const CustomScaffold({super.key, required this.body});
+  const CustomScaffold({
+    super.key,
+    required this.body,
+    this.splash = false,
+  });
 
   final Widget body;
+  final bool splash;
 
   @override
   Widget build(BuildContext context) {
@@ -11,22 +16,23 @@ class CustomScaffold extends StatelessWidget {
       resizeToAvoidBottomInset: false,
       body: Column(
         children: [
-          // Container(
-          //   height: MediaQuery.of(context).viewPadding.top,
-          //   color: AppColors.white,
-          // ),
           Expanded(
             child: Stack(
               children: [
-                Image.asset('assets/bg.png'),
+                if (splash) Image.asset('assets/bg.png'),
                 Container(
                   decoration: BoxDecoration(
                     gradient: LinearGradient(
                       begin: Alignment.topCenter,
                       end: Alignment.bottomCenter,
                       colors: [
-                        const Color(0xff0A0C14).withOpacity(0),
-                        const Color(0xff163B4B),
+                        if (splash) ...[
+                          const Color(0xff0A0C14).withOpacity(0),
+                          const Color(0xff163B4B),
+                        ] else ...[
+                          const Color(0xff163B4B),
+                          const Color(0xff0A0C14)
+                        ]
                       ],
                     ),
                   ),
