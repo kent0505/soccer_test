@@ -10,6 +10,8 @@ class PuzzlePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    precacheImages2(context);
+
     return Column(
       children: [
         const CustomAppbar(title: 'PUZZLES'),

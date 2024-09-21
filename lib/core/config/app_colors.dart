@@ -11,6 +11,8 @@ class AppColors {
   static const Color navbarIcon = Color(0xff0D1923);
 
   static Color black35 = black.withOpacity(0.35);
+  static Color black50 = black.withOpacity(0.5);
+  static Color black75 = black.withOpacity(0.75);
   static Color white50 = white.withOpacity(0.5);
 }
 

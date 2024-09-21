@@ -94,3 +94,51 @@ void precacheImages(BuildContext context) {
     logger(e);
   }
 }
+
+void precacheImages2(BuildContext context) {
+  try {
+    List<String> imageAssets = [
+      'assets/puzzle/cup1.png',
+      'assets/puzzle/cup2.png',
+      'assets/puzzle/cup3.png',
+      'assets/puzzle/cup4.png',
+      'assets/puzzle/cup5.png',
+      'assets/puzzle/cup6.png',
+      'assets/puzzle/cup7.png',
+      'assets/puzzle/cup8.png',
+      'assets/puzzle/cup9.png',
+      'assets/puzzle/boots1.png',
+      'assets/puzzle/boots2.png',
+      'assets/puzzle/boots3.png',
+      'assets/puzzle/boots4.png',
+      'assets/puzzle/boots5.png',
+      'assets/puzzle/boots6.png',
+      'assets/puzzle/boots7.png',
+      'assets/puzzle/boots8.png',
+      'assets/puzzle/boots9.png',
+      'assets/puzzle/goalkeeper1.png',
+      'assets/puzzle/goalkeeper2.png',
+      'assets/puzzle/goalkeeper3.png',
+      'assets/puzzle/goalkeeper4.png',
+      'assets/puzzle/goalkeeper5.png',
+      'assets/puzzle/goalkeeper6.png',
+      'assets/puzzle/goalkeeper7.png',
+      'assets/puzzle/goalkeeper8.png',
+      'assets/puzzle/goalkeeper9.png',
+      'assets/puzzle/helmet1.png',
+      'assets/puzzle/helmet2.png',
+      'assets/puzzle/helmet3.png',
+      'assets/puzzle/helmet4.png',
+      'assets/puzzle/helmet5.png',
+      'assets/puzzle/helmet6.png',
+      'assets/puzzle/helmet7.png',
+      'assets/puzzle/helmet8.png',
+      'assets/puzzle/helmet9.png',
+    ];
+    for (String assets in imageAssets) {
+      precacheImage(AssetImage(assets), context);
+    }
+  } catch (e) {
+    logger(e);
+  }
+}

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
+import '../../../core/models/news_model.dart';
 import '../../../core/utils.dart';
 import '../../../core/widgets/custom_appbar.dart';
+import '../widgets/news_card.dart';
 
 class NewsPage extends StatelessWidget {
   const NewsPage({super.key});
@@ -13,8 +15,15 @@ class NewsPage extends StatelessWidget {
         const CustomAppbar(title: 'NEWS'),
         Expanded(
           child: ListView(
-            children: const [
-              SizedBox(height: 13),
+            padding: const EdgeInsets.symmetric(horizontal: 13),
+            children: [
+              const SizedBox(height: 13),
+              ...List.generate(
+                newsList.length,
+                (index) {
+                  return NewsCard(news: newsList[index]);
+                },
+              ),
             ],
           ),
         ),
