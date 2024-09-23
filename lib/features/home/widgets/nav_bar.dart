@@ -50,7 +50,7 @@ class NavBar extends StatelessWidget {
                   },
                 ),
                 _NavBarButton(
-                  title: 'News',
+                  title: 'Puzzle',
                   asset: 'puzzle',
                   active: state is HomePuzzle,
                   onPressed: () {
